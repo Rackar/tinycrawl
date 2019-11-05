@@ -56,4 +56,18 @@ async function dirExists(dir) {
   return mkdirStatus;
 }
 
+async function fileExists(dir) {
+  let isExists = await getStat(dir);
+  //如果该路径且不是文件，返回false
+  if (isExists && isExists.isDirectory()) {
+    return false;
+  } else if (isExists) {
+    //如果该路径存在但是文件，返回true
+    return true;
+  } else {
+    return false;
+  }
+}
+
 exports.dirExists = dirExists;
+exports.fileExists = fileExists;
