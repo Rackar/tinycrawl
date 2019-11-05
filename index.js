@@ -5,7 +5,7 @@ let huanbao = require("./huanbao");
 
 function mainCircle(params) {
   console.log("start");
-  doEveryHour();
+  // doEveryHour();
   // doEveryDay();
   // doEveryTwoWeeks();
 
@@ -16,15 +16,19 @@ function mainCircle(params) {
 
 function doEveryHour() {
   console.log("每小时任务触发");
-  qixiang.getHourData();
+  huanbao.getHourData();
 }
 function doEveryDay() {
   console.log("每日任务触发");
-  qixiang.getTodayData();
+  huanbao.getTodayData();
+  qixiang.getSingleDay();
+  qixiang.getPast24h();
+  qixiang.getFuture72h();
+  qixiang.getWaring();
 }
 
 function doEveryTwoWeeks() {
-  qixiang.getMonthData();
+  huanbao.getMonthData();
   console.log("每两周任务触发");
 }
 

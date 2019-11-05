@@ -13,10 +13,7 @@
       "restart": true,
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-      "runtimeArgs": ["-i", "./resultData/"]
-
-      // "args": ["${i:./resultData/}"]
-      // "ignore": [".git", "node_modules/", "resultData/"]
+      "runtimeArgs": ["-i", "./resultDataQX/"]
     },
 
     {
