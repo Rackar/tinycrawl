@@ -1,9 +1,11 @@
 "use strict";
 let fs = require("fs");
-var path = require("path");
+// var path = require("path");
 let request = require("request");
 let dirExist = require("./dirExist");
-
+var Day = require("./db/day");
+var Hour = require("./db/hour");
+var Month = require("./db/month");
 const citys = {
   "150100": "呼和浩特市",
   "150200": "包头市",
@@ -149,17 +151,31 @@ Date.prototype.format = function(formatStr) {
 // }
 
 async function saveResultJson(url, timeStr) {
-  request.get(url, async (error, response, body) => {
-    if (response.statusCode == 200) {
-      await dirExist.dirExists("./resultData");
-      let fileName = `resultData/${timeStr}环保空气污染指数.json`;
-      fileName = await dirExist.renameJsonFileIfExist(fileName);
-      body = JSON.stringify(JSON.parse(body), null, 2);
-      fs.writeFile(fileName, body, "utf8", err => {
-        if (err) throw err;
-        console.log("写入完成：" + fileName);
-      });
-    }
+  return new Promise((resolve, reject) => {
+    request.get(url, async (error, response, body) => {
+      if (response.statusCode == 200) {
+        await dirExist.dirExists("./resultData");
+        let fileName = `resultData/${timeStr}环保空气污染指数.json`;
+        fileName = await dirExist.renameJsonFileIfExist(fileName);
+        let data = JSON.parse(body);
+        body = JSON.stringify(data, null, 2);
+        await fs.writeFile(fileName, body, "utf8", err => {
+          if (err) throw err;
+          console.log("写入完成：" + fileName);
+        });
+        resolve(data);
+        // let testdata = {
+        //   a: "222",
+        //   b: "333"
+        // };
+        // var file = new File({
+        //   body: data,
+        //   city: "2222"
+        // });
+        // let result = await file.save();
+        // console.log(result);
+      }
+    });
   });
 }
 function sleepTime(secends) {
@@ -167,16 +183,37 @@ function sleepTime(secends) {
     setTimeout(() => resolve(), secends * 1000);
   });
 }
+function onInsert(err, docs) {
+  if (err) {
+    // TODO: handle error
+  } else {
+    console.info("%d potatoes were successfully stored.", docs.insertedCount);
+  }
+}
+
+function saveToMongoDBQxHour(body) {
+  // var Potato = mongoose.model('Potato', PotatoSchema);
+
+  var potatoBag = body;
+
+  File.collection.insert(potatoBag, onInsert);
+}
+function saveToMongoDBQxDay(body) {}
+function saveToMongoDBQxTwoWeeks(body) {}
+
 async function getMonthData(params) {
   // citys.forEach((city, index) => {
+  let results = [];
   for (let index in citys) {
     const monthUrl = "http://106.74.0.132:4000/api/cityDetail/";
     let urlFormat = monthUrl + index;
     let date = new Date();
     let timeStr = "月：" + date.format("YYYY-MM") + "月" + citys[index];
-    saveResultJson(urlFormat, timeStr);
+    let result = await saveResultJson(urlFormat, timeStr);
+    results.push(result);
     await sleepTime(0.5);
   }
+  await Month.collection.insert(results, onInsert);
 }
 
 async function getTodayData() {
@@ -189,7 +226,8 @@ async function getTodayData() {
       date.format("YYYY-MM-DD") +
       "日" +
       (i == 0 ? "盟市级" : i == 1 ? "旗县级" : i == 2 ? "监测点" : "其他");
-    saveResultJson(urlFormat, timeStr);
+    let result = await saveResultJson(urlFormat, timeStr);
+    await Day.collection.insert(result, onInsert);
     await sleepTime(0.5);
   }
 }
@@ -209,7 +247,8 @@ async function getHourData() {
       "时" +
       (i == 0 ? "盟市级" : i == 1 ? "旗县级" : i == 2 ? "监测点" : "其他");
 
-    saveResultJson(urlFormat, timeStr);
+    let result = await saveResultJson(urlFormat, timeStr);
+    await Hour.collection.insert(result, onInsert);
     await sleepTime(0.5);
   }
 }
