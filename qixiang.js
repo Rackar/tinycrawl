@@ -213,7 +213,7 @@ async function getMonthData(params) {
     results.push(result);
     await sleepTime(0.5);
   }
-  await Month.collection.insert(results, onInsert);
+  await Month.collection.insertMany(results, onInsert);
 }
 
 async function getTodayData() {
@@ -227,7 +227,7 @@ async function getTodayData() {
       "日" +
       (i == 0 ? "盟市级" : i == 1 ? "旗县级" : i == 2 ? "监测点" : "其他");
     let result = await saveResultJson(urlFormat, timeStr);
-    await Day.collection.insert(result, onInsert);
+    await Day.collection.insertMany(result, onInsert);
     await sleepTime(0.5);
   }
 }
@@ -248,7 +248,7 @@ async function getHourData() {
       (i == 0 ? "盟市级" : i == 1 ? "旗县级" : i == 2 ? "监测点" : "其他");
 
     let result = await saveResultJson(urlFormat, timeStr);
-    await Hour.collection.insert(result, onInsert);
+    await Hour.collection.insertMany(result, onInsert);
     await sleepTime(0.5);
   }
 }
