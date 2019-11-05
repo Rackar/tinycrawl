@@ -69,5 +69,17 @@ async function fileExists(dir) {
   }
 }
 
+async function renameJsonFileIfExist(fileName) {
+  let fileExist = await fileExists(fileName);
+  let repeatNum = 1;
+  //文件已存在时添加.有一个小bug
+  while (fileExist) {
+    fileName = fileName.slice(0, -5) + `(${repeatNum})` + fileName.slice(-5);
+    fileExist = await fileExists(fileName);
+    repeatNum++;
+  }
+  return fileName;
+}
+
 exports.dirExists = dirExists;
-exports.fileExists = fileExists;
+exports.renameJsonFileIfExist = renameJsonFileIfExist;
