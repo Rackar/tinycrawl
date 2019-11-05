@@ -7,7 +7,7 @@ function mainCircle(params) {
   console.log("start");
   doEveryHour();
   doEveryDay();
-  // doEveryTwoWeeks();
+  doEveryTwoWeeks();
 
   const hourCircle = setInterval(doEveryHour, 3600 * 1000);
   const dayCircle = setInterval(doEveryDay, 24 * 3600 * 1000);
