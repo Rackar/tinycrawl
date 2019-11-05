@@ -1,6 +1,8 @@
 "use strict";
 let fs = require("fs");
+var path = require("path");
 let request = require("request");
+let dirExist = require("./dirExist");
 
 function test(params) {
   console.log(params);
@@ -217,28 +219,38 @@ function getMonthData(params) {
     });
   });
 }
-Date.prototype.format = function(formatStr){   
-        var str = formatStr;   
-        str=str.replace(/yyyy|YYYY/,this.getFullYear());  
-        str=str.replace(/MM/,(this.getMonth()+1)>9?(this.getMonth()+1).toString():'0' + (this.getMonth()+1));   
-        str=str.replace(/dd|DD/,this.getDate()>9?this.getDate().toString():'0' + this.getDate());   
-       return str;   
-} 
+Date.prototype.format = function(formatStr) {
+  var str = formatStr;
+  str = str.replace(/yyyy|YYYY/, this.getFullYear());
+  str = str.replace(
+    /MM/,
+    this.getMonth() + 1 > 9
+      ? (this.getMonth() + 1).toString()
+      : "0" + (this.getMonth() + 1)
+  );
+  str = str.replace(
+    /dd|DD/,
+    this.getDate() > 9 ? this.getDate().toString() : "0" + this.getDate()
+  );
+  return str;
+};
+
 function getTodayData() {
-  console.log("a");
   for (let i = 0; i < 3; i++) {
+    // let i = 0;
     let urlFormat = `http://106.74.0.132:8088/api/map/${i}?type=day`;
-    let req = request.get(urlFormat, (error, response, body) => {
+    let req = request.get(urlFormat, async (error, response, body) => {
       let date = new Date();
-      let timeStr =
-        "日" + date.format('YYYYMMDD')
+      let timeStr = "日" + date.format("YYYYMMDD");
       let flag =
         i == 0 ? "盟市级" : i == 1 ? "旗县级" : i == 2 ? "监测点" : "其他";
-      let fileName = `${timeStr}${flag}环保空气污染指数.json`;
-      body=JSON.stringify(JSON.parse(body),null,2)
+      // var stat = fs.statSync(path.join(__dirname, "resultData"));
+      let sb = await dirExist.dirExists("./resultData");
+      let fileName = `resultData/${timeStr}${flag}环保空气污染指数.json`;
+      body = JSON.stringify(JSON.parse(body), null, 2);
       fs.writeFile(fileName, body, "utf8", err => {
         if (err) throw err;
-        console.log("写入完成："+fileName);
+        console.log("写入完成：" + fileName);
       });
     });
   }
