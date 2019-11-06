@@ -5,21 +5,12 @@ let huanbao = require("./huanbao");
 let tools = require("./utils/tools");
 
 async function mainCircle(params) {
-  console.log("start");
-  // qixiang.getSingleDay();//测试通过
-  // qixiang.getPast24h();//测试通过
-  // qixiang.getFuture72h();
-  // qixiang.getWaring();
-  // huanbao.getTodayData();
-  //  huanbao.getHourData();
-
-  huanbao.getMonthData();
-
-  // doEveryHour();
-  // await tools.sleepTime(10);
-  // doEveryDay();
-  // await tools.sleepTime(10);
-  // doEveryTwoWeeks();
+  console.log("开始执行抓取任务");
+  doEveryHour();
+  await tools.sleepTime(10);
+  doEveryDay();
+  await tools.sleepTime(10);
+  doEveryTwoWeeks();
 
   const hourCircle = setInterval(doEveryHour, 3600 * 1000);
   const dayCircle = setInterval(doEveryDay, 24 * 3600 * 1000);
@@ -48,7 +39,7 @@ function doEveryTwoWeeks() {
 }
 //即可以程序中用：
 let args = process.argv.splice(2);
-console.log(args);
+console.log("启动参数可选-noDB -noJSON -useProxy,当前参数：" + args);
 global.writeToMongoDB = args.findIndex(obj => obj == "-noDB") == -1;
 global.writeToJSON = args.findIndex(obj => obj == "-noJSON") == -1;
 global.useProxy = args.findIndex(obj => obj == "-useProxy") != -1;
