@@ -3,6 +3,11 @@ let fs = require("fs");
 let request = require("request");
 let dirExist = require("./utils/dirExist");
 let tools = require("./utils/tools");
+
+var Jiancdian = require("./db/dayJiancedian");
+var Mengshi = require("./db/dayMengshi");
+var Qixian = require("./db/dayQixian");
+
 var Day = require("./db/day");
 var Hour = require("./db/hour");
 var Month = require("./db/month");
@@ -204,8 +209,15 @@ async function getTodayData() {
       "日" +
       (i == 0 ? "盟市级" : i == 1 ? "旗县级" : i == 2 ? "监测点" : "其他");
     let result = await saveResultJson(urlFormat, timeStr);
-    if (result.length && global.writeToMongoDB)
-      Day.collection.insertMany(result, onInsert);
+    if (result.length && global.writeToMongoDB) {
+      if (i === 0) {
+        Mengshi.collection.insertMany(result, onInsert);
+      } else if (i === 1) {
+        Qixian.collection.insertMany(result, onInsert);
+      } else if (i === 2) {
+        Jiancdian.collection.insertMany(result, onInsert);
+      }
+    }
     await tools.sleepTime(2);
   }
 }
