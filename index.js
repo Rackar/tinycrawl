@@ -5,12 +5,14 @@ let huanbao = require("./huanbao");
 let tools = require("./utils/tools");
 
 async function mainCircle(params) {
+  huanbao.getHourData();
+  huanbao.getTodayData();
   console.log("开始执行抓取任务");
-  doEveryHour();
-  await tools.sleepTime(10);
-  doEveryDay();
-  await tools.sleepTime(10);
-  doEveryTwoWeeks();
+  // doEveryHour();
+  // await tools.sleepTime(10);
+  // doEveryDay();
+  // await tools.sleepTime(10);
+  // doEveryTwoWeeks();
 
   const hourCircle = setInterval(doEveryHour, 3600 * 1000);
   const dayCircle = setInterval(doEveryDay, 24 * 3600 * 1000);

@@ -151,7 +151,9 @@ async function saveResultJson(url, timeStr) {
         let fileName = `resultDataHB/${timeStr}环保空气污染指数.json`;
         fileName = await dirExist.renameJsonFileIfExist(fileName);
         let data = JSON.parse(body);
-        let dataNoDot = tools.parseObjReplaceDot(data);
+
+        let dataNoDot =
+          data.constructor === Object ? tools.parseObjReplaceDot(data) : data;
         body = JSON.stringify(data, null, 2);
         if (global.writeToJSON)
           await fs.writeFile(fileName, body, "utf8", err => {
@@ -203,7 +205,7 @@ async function getTodayData() {
       (i == 0 ? "盟市级" : i == 1 ? "旗县级" : i == 2 ? "监测点" : "其他");
     let result = await saveResultJson(urlFormat, timeStr);
     if (result.length && global.writeToMongoDB)
-      await Day.collection.insertMany(result, onInsert);
+      Day.collection.insertMany(result, onInsert);
     await tools.sleepTime(2);
   }
 }
@@ -225,7 +227,7 @@ async function getHourData() {
 
     let result = await saveResultJson(urlFormat, timeStr);
     if (result.length && global.writeToMongoDB)
-      await Hour.collection.insertMany(result, onInsert);
+      Hour.collection.insertMany(result, onInsert);
     await tools.sleepTime(2);
   }
 }
