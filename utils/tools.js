@@ -21,9 +21,12 @@ function sleepTime(secends) {
 }
 
 function parseObjReplaceDot(obj) {
+  if (obj.constructor !== Object) {
+    throw new Error("只支持对象类型，数组请遍历调用");
+  }
   let newObj = {};
   for (let key in obj) {
-    var newkey = key.replace(".", "_");
+    var newkey = key.replace(/\./g, "_"); //将.全部替换为_
     let isObj = obj[key].constructor === Object;
     let isArr = obj[key].constructor === Array;
     if (isObj) {
@@ -76,7 +79,8 @@ function parseObjReplaceDot(obj) {
 //     ]
 //   ]
 // };
-// console.log(parseObjReplaceDot(testObj));
+
+// console.log(parseObjReplaceDot({ "a.a.a": "b" }));
 
 exports.format = format;
 exports.sleepTime = sleepTime;
