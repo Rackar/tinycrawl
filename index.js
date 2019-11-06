@@ -6,7 +6,7 @@ let tools = require("./utils/tools");
 
 async function mainCircle(params) {
   console.log("start");
-  qixiang.readCSV();
+  qixiang.getSingleDay();
   // doEveryHour();
   // await tools.sleepTime(10);
   // doEveryDay();

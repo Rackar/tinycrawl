@@ -7,7 +7,8 @@ var qxFuture72h = require("./db/qxFuture72h");
 var qxTodayWarning = require("./db/qxTodayWarning");
 var qxDay = require("./db/qxDay");
 let tools = require("./utils/tools");
-let json = require("./data/test.json");
+let Agent = require("./utils/agent");
+let codelist = require("./data/citys.json");
 async function saveResultJson(url, timeStr) {
   return new Promise((resolve, reject) => {
     request(
@@ -127,16 +128,17 @@ function readCSV() {
 }
 
 async function getSingleDay() {
-  let codelist = [
-    {
-      code: 50425,
-      name: "额尔古纳市",
-      lat: 50.15,
-      long: 120.11,
-      chuanganqi: 582.3,
-      guancechang: 581.4
-    }
-  ];
+  // let codelist = [
+  //   {
+  //     code: 50425,
+  //     name: "额尔古纳市",
+  //     lat: 50.15,
+  //     long: 120.11,
+  //     chuanganqi: 582.3,
+  //     guancechang: 581.4
+  //   }
+  // ];
+
   let date = new Date(Date.now() - 24 * 60 * 60 * 1000);
   let today = date.format("YYYYMMDD");
   let results = [];
@@ -154,16 +156,16 @@ async function getSingleDay() {
 }
 
 async function getPast24h() {
-  let codelist = [
-    {
-      code: 50425,
-      name: "额尔古纳市",
-      lat: 50.15,
-      long: 120.11,
-      chuanganqi: 582.3,
-      guancechang: 581.4
-    }
-  ];
+  // let codelist = [
+  //   {
+  //     code: 50425,
+  //     name: "额尔古纳市",
+  //     lat: 50.15,
+  //     long: 120.11,
+  //     chuanganqi: 582.3,
+  //     guancechang: 581.4
+  //   }
+  // ];
   let results = [];
   let date = new Date();
   for (let i = 0; i < codelist.length; i++) {
@@ -183,17 +185,17 @@ async function getPast24h() {
 }
 
 async function getFuture72h() {
-  console.log(json);
-  let codelist = [
-    {
-      code: 50425,
-      name: "额尔古纳市",
-      lat: 50.15,
-      long: 120.11,
-      chuanganqi: 582.3,
-      guancechang: 581.4
-    }
-  ];
+  // console.log(json);
+  // let codelist = [
+  //   {
+  //     code: 50425,
+  //     name: "额尔古纳市",
+  //     lat: 50.15,
+  //     long: 120.11,
+  //     chuanganqi: 582.3,
+  //     guancechang: 581.4
+  //   }
+  // ];
 
   let results = [];
   let date = new Date();

@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "http": "0.0.0",
     "mongoose": "^5.7.7",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "socks5-client": "^1.2.8",
+    "util": "^0.12.1"
   }
 }
