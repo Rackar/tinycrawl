@@ -6,7 +6,10 @@ let tools = require("./utils/tools");
 
 async function mainCircle(params) {
   console.log("start");
-  qixiang.getSingleDay();
+  // qixiang.getSingleDay();//测试通过
+  // qixiang.getPast24h();//测试通过
+  // qixiang.getFuture72h();
+  qixiang.getWaring();
   // doEveryHour();
   // await tools.sleepTime(10);
   // doEveryDay();
@@ -43,6 +46,6 @@ let args = process.argv.splice(2);
 console.log(args);
 global.writeToMongoDB = args.findIndex(obj => obj == "-noDB") == -1;
 global.writeToJSON = args.findIndex(obj => obj == "-noJSON") == -1;
-global.useProxy = args.findIndex(obj => obj == "-proxy") == -1;
+global.useProxy = args.findIndex(obj => obj == "-useProxy") != -1;
 
 mainCircle();

@@ -171,7 +171,7 @@ function onInsert(err, docs) {
   if (err) {
     // TODO: handle error
   } else {
-    console.info("%d potatoes were successfully stored.", docs.insertedCount);
+    console.info("%d 条数据成功写入mongoDB。", docs.insertedCount);
   }
 }
 

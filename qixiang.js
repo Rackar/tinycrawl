@@ -89,7 +89,7 @@ function onInsert(err, docs) {
     // TODO: handle error
     console.log(err);
   } else {
-    console.info("%d potatoes were successfully stored.", docs.insertedCount);
+    console.info("%d 条数据成功写入mongoDB。", docs.insertedCount);
   }
 }
 function readCSV() {
@@ -148,7 +148,6 @@ async function getSingleDay() {
   //     guancechang: 581.4
   //   }
   // ];
-  codelist = codelist.slice(0, 4);
 
   let date = new Date(Date.now() - 24 * 60 * 60 * 1000);
   let today = date.format("YYYYMMDD");
@@ -168,7 +167,6 @@ async function getSingleDay() {
       results.push(...arr);
     }
 
-    console.log(i);
     await tools.sleepTime(2);
   }
   console.log("end");
@@ -218,7 +216,7 @@ async function getFuture72h() {
   //     guancechang: 581.4
   //   }
   // ];
-
+  // codelist = codelist.slice(0, 4);
   let results = [];
   let date = new Date();
   for (let i = 0; i < codelist.length; i++) {
