@@ -19,5 +19,65 @@ function sleepTime(secends) {
     setTimeout(() => resolve(), secends * 1000);
   });
 }
+
+function parseObjReplaceDot(obj) {
+  let newObj = {};
+  for (let key in obj) {
+    var newkey = key.replace(".", "_");
+    let isObj = obj[key].constructor === Object;
+    let isArr = obj[key].constructor === Array;
+    if (isObj) {
+      newObj[newkey] = parseObjReplaceDot(obj[key]);
+    } else if (isArr) {
+      let newArr = [];
+      obj[key].forEach(arrObj => {
+        if (arrObj.constructor === Object) {
+          newArr.push(parseObjReplaceDot(arrObj));
+        } else if (arrObj.constructor === Array) {
+          newArr.push(parseObjReplaceDot(arrObj));
+        } else {
+          newArr.push(arrObj);
+        }
+      });
+      newObj[newkey] = newArr;
+    } else {
+      newObj[newkey] = obj[key];
+    }
+  }
+  return newObj;
+}
+// let testObj = {
+//   a: "x",
+//   "c.c": {
+//     "pm2.5": 3,
+//     pm10: {
+//       "pm2.5": 3
+//     }
+//   },
+//   b: {
+//     "pm2.5": 3,
+//     pm10: 2
+//   },
+//   d: [
+//     [
+//       {
+//         "pm2.5": 3,
+//         pm10: ["a", "b", "c", "d"]
+//       },
+//       {
+//         "pm2.5": 3,
+//         pm10: [
+//           {
+//             "pm2.5": 3,
+//             pm10: 2
+//           }
+//         ]
+//       }
+//     ]
+//   ]
+// };
+// console.log(parseObjReplaceDot(testObj));
+
 exports.format = format;
 exports.sleepTime = sleepTime;
+exports.parseObjReplaceDot = parseObjReplaceDot;

@@ -151,13 +151,14 @@ async function saveResultJson(url, timeStr) {
         let fileName = `resultDataHB/${timeStr}环保空气污染指数.json`;
         fileName = await dirExist.renameJsonFileIfExist(fileName);
         let data = JSON.parse(body);
+        let dataNoDot = tools.parseObjReplaceDot(data);
         body = JSON.stringify(data, null, 2);
         if (global.writeToJSON)
           await fs.writeFile(fileName, body, "utf8", err => {
             if (err) throw err;
             console.log("写入完成：" + fileName);
           });
-        resolve(data);
+        resolve(dataNoDot);
       }
     });
   });
@@ -176,7 +177,6 @@ function onInsert(err, docs) {
 }
 
 async function getMonthData(params) {
-  // citys.forEach((city, index) => {
   let results = [];
   for (let index in citys) {
     const monthUrl = "http://106.74.0.132:4000/api/cityDetail/";
@@ -188,7 +188,7 @@ async function getMonthData(params) {
     await tools.sleepTime(2);
   }
   if (results.length && global.writeToMongoDB)
-    await Month.collection.insertMany(results, onInsert);
+    Month.collection.insertMany(results, onInsert);
 }
 
 async function getTodayData() {

@@ -9,7 +9,12 @@ async function mainCircle(params) {
   // qixiang.getSingleDay();//测试通过
   // qixiang.getPast24h();//测试通过
   // qixiang.getFuture72h();
-  qixiang.getWaring();
+  // qixiang.getWaring();
+  // huanbao.getTodayData();
+  //  huanbao.getHourData();
+
+  huanbao.getMonthData();
+
   // doEveryHour();
   // await tools.sleepTime(10);
   // doEveryDay();
