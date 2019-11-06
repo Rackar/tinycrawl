@@ -127,17 +127,36 @@ Date.prototype.format = tools.format;
 
 async function saveResultJson(url, timeStr) {
   return new Promise((resolve, reject) => {
-    request.get(url, async (error, response, body) => {
+    let option = {
+      url: url, //请求路径
+      method: "GET", //请求方式，默认为get
+      headers: {
+        //设置请求头
+        "content-type": "application/json",
+        Host: "data.cma.cn",
+        "User-Agent":
+          "Mozilla/ 5.0(iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit / 604.1.38(KHTML, like Gecko) Version / 11.0 Mobile / 15A372 Safari / 604.1"
+      }
+    };
+    if (global.useProxy) {
+      option.agentClass = Agent;
+      option.agentOptions = {
+        // socksHost: "my-tor-proxy-host", // Defaults to 'localhost'.
+        socksPort: 7070 // Defaults to 1080.
+      };
+    }
+    request(option, async (error, response, body) => {
       if (response.statusCode == 200) {
         await dirExist.dirExists("./resultDataHB");
         let fileName = `resultDataHB/${timeStr}环保空气污染指数.json`;
         fileName = await dirExist.renameJsonFileIfExist(fileName);
         let data = JSON.parse(body);
         body = JSON.stringify(data, null, 2);
-        await fs.writeFile(fileName, body, "utf8", err => {
-          if (err) throw err;
-          console.log("写入完成：" + fileName);
-        });
+        if (global.writeToJSON)
+          await fs.writeFile(fileName, body, "utf8", err => {
+            if (err) throw err;
+            console.log("写入完成：" + fileName);
+          });
         resolve(data);
       }
     });
@@ -168,7 +187,8 @@ async function getMonthData(params) {
     results.push(result);
     await tools.sleepTime(2);
   }
-  await Month.collection.insertMany(results, onInsert);
+  if (results.length && global.writeToMongoDB)
+    await Month.collection.insertMany(results, onInsert);
 }
 
 async function getTodayData() {
@@ -182,7 +202,8 @@ async function getTodayData() {
       "日" +
       (i == 0 ? "盟市级" : i == 1 ? "旗县级" : i == 2 ? "监测点" : "其他");
     let result = await saveResultJson(urlFormat, timeStr);
-    await Day.collection.insertMany(result, onInsert);
+    if (result.length && global.writeToMongoDB)
+      await Day.collection.insertMany(result, onInsert);
     await tools.sleepTime(2);
   }
 }
@@ -203,7 +224,8 @@ async function getHourData() {
       (i == 0 ? "盟市级" : i == 1 ? "旗县级" : i == 2 ? "监测点" : "其他");
 
     let result = await saveResultJson(urlFormat, timeStr);
-    await Hour.collection.insertMany(result, onInsert);
+    if (result.length && global.writeToMongoDB)
+      await Hour.collection.insertMany(result, onInsert);
     await tools.sleepTime(2);
   }
 }

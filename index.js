@@ -41,7 +41,8 @@ function doEveryTwoWeeks() {
 //即可以程序中用：
 let args = process.argv.splice(2);
 console.log(args);
-let test = new Date();
-test.format("YYYYMMDD");
-console.log(test);
+global.writeToMongoDB = args.findIndex(obj => obj == "-noDB") == -1;
+global.writeToJSON = args.findIndex(obj => obj == "-noJSON") == -1;
+global.useProxy = args.findIndex(obj => obj == "-proxy") == -1;
+
 mainCircle();

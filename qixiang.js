@@ -11,18 +11,26 @@ let Agent = require("./utils/agent");
 let codelist = require("./data/citys.json");
 async function saveResultJson(url, timeStr) {
   return new Promise((resolve, reject) => {
+    let option = {
+      url: url, //请求路径
+      method: "GET", //请求方式，默认为get
+      headers: {
+        //设置请求头
+        "content-type": "application/json",
+        Host: "data.cma.cn",
+        "User-Agent":
+          "Mozilla/ 5.0(iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit / 604.1.38(KHTML, like Gecko) Version / 11.0 Mobile / 15A372 Safari / 604.1"
+      }
+    };
+    if (global.useProxy) {
+      option.agentClass = Agent;
+      option.agentOptions = {
+        // socksHost: "my-tor-proxy-host", // Defaults to 'localhost'.
+        socksPort: 7070 // Defaults to 1080.
+      };
+    }
     request(
-      {
-        url: url, //请求路径
-        method: "GET", //请求方式，默认为get
-        headers: {
-          //设置请求头
-          "content-type": "application/json",
-          Host: "data.cma.cn",
-          "User-Agent":
-            "Mozilla/ 5.0(iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit / 604.1.38(KHTML, like Gecko) Version / 11.0 Mobile / 15A372 Safari / 604.1"
-        }
-      },
+      option,
       // request.get(url,
       async (error, response, body) => {
         // body "{"returnCode":"1","list":[]}"
@@ -33,19 +41,21 @@ async function saveResultJson(url, timeStr) {
           let data = JSON.parse(body);
           if (data.returnCode === "0" && data.list && data.list.length) {
             body = JSON.stringify(data.list, null, 2);
-            await fs.writeFile(fileName, body, "utf8", err => {
-              if (err) throw err;
-              console.log("写入完成：" + fileName);
-            });
+            if (global.writeToJSON)
+              await fs.writeFile(fileName, body, "utf8", err => {
+                if (err) throw err;
+                console.log("写入完成：" + fileName);
+              });
             resolve(data.list);
           } else if (data.returnCode === "1") {
             reject();
           } else {
             body = JSON.stringify(data, null, 2);
-            await fs.writeFile(fileName, body, "utf8", err => {
-              if (err) throw err;
-              console.log("写入完成：" + fileName);
-            });
+            if (global.writeToJSON)
+              await fs.writeFile(fileName, body, "utf8", err => {
+                if (err) throw err;
+                console.log("写入完成：" + fileName);
+              });
             resolve(data);
           }
         }
@@ -138,6 +148,7 @@ async function getSingleDay() {
   //     guancechang: 581.4
   //   }
   // ];
+  codelist = codelist.slice(0, 4);
 
   let date = new Date(Date.now() - 24 * 60 * 60 * 1000);
   let today = date.format("YYYYMMDD");
@@ -146,13 +157,23 @@ async function getSingleDay() {
     let urlFormat = `http://data.cma.cn/dataGis/gis/getStaDetailInfo?funitemmenuid=115990101&dateTime=${today}100000&typeCode=NWST&staId=${codelist[i].code}`;
     console.log(urlFormat);
     let timeStr = "日：" + date.format("YYYY-MM-DD") + "日" + codelist[i].name;
-    let result = await saveResultJson(urlFormat, timeStr);
-    results.push(...result);
+    let arr = await saveResultJson(urlFormat, timeStr);
+    if (arr.length) {
+      arr = arr.map(obj => {
+        obj.code = codelist[i].code;
+        obj.name = codelist[i].name;
+        obj.date = date.format("YYYYMMDD");
+        return obj;
+      });
+      results.push(...arr);
+    }
+
     console.log(i);
-    await tools.sleepTime(4);
+    await tools.sleepTime(2);
   }
   console.log("end");
-  qxDay.collection.insertMany(results, onInsert);
+  if (results.length && global.writeToMongoDB)
+    qxDay.collection.insertMany(results, onInsert);
 }
 
 async function getPast24h() {
@@ -181,7 +202,8 @@ async function getPast24h() {
 
     await tools.sleepTime(5);
   }
-  qxPast24h.collection.insertMany(results, onInsert);
+  if (results.length && global.writeToMongoDB)
+    qxPast24h.collection.insertMany(results, onInsert);
 }
 
 async function getFuture72h() {
@@ -212,7 +234,8 @@ async function getFuture72h() {
 
     await tools.sleepTime(5);
   }
-  qxFuture72h.collection.insertMany(results, onInsert);
+  if (results.length && global.writeToMongoDB)
+    qxFuture72h.collection.insertMany(results, onInsert);
 }
 
 async function getWaring() {
@@ -226,8 +249,8 @@ async function getWaring() {
   let result = await saveResultJson(urlFormat, timeStr);
 
   await tools.sleepTime(5);
-
-  qxTodayWarning.collection.insertMany(result, onInsert);
+  if (result.length && global.writeToMongoDB)
+    qxTodayWarning.collection.insertMany(result, onInsert);
 }
 
 exports.getPast24h = getPast24h;
