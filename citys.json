@@ -1,0 +1,902 @@
+[
+  {
+    "province": "内蒙古",
+    "code": "50425",
+    "name": "额尔古纳市",
+    "lat": "50.15",
+    "long": "120.11",
+    "chuanganqi": "582.3",
+    "guancezhan": "581.4"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50431",
+    "name": "根河市",
+    "lat": "50.47",
+    "long": "121.31",
+    "chuanganqi": "718.2",
+    "guancezhan": "717.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50434",
+    "name": "图里河",
+    "lat": "50.29",
+    "long": "121.41",
+    "chuanganqi": "733.7",
+    "guancezhan": "732.6"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50445",
+    "name": "鄂伦春自治旗",
+    "lat": "50.35",
+    "long": "123.44",
+    "chuanganqi": "424.7",
+    "guancezhan": "423.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50514",
+    "name": "满洲里",
+    "lat": "49.35",
+    "long": "117.19",
+    "chuanganqi": "662.7",
+    "guancezhan": "661.8"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50524",
+    "name": "陈巴尔虎旗",
+    "lat": "49.19",
+    "long": "119.26",
+    "chuanganqi": "578.5",
+    "guancezhan": "576.6"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50525",
+    "name": "鄂温克族自治旗",
+    "lat": "49.09",
+    "long": "119.45",
+    "chuanganqi": "621.6",
+    "guancezhan": "620.8"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50526",
+    "name": "牙克石市",
+    "lat": "49.17",
+    "long": "120.42",
+    "chuanganqi": "670.0",
+    "guancezhan": "668.8"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50527",
+    "name": "海拉尔",
+    "lat": "49.15",
+    "long": "119.42",
+    "chuanganqi": "650.4",
+    "guancezhan": "649.6"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50548",
+    "name": "小二沟",
+    "lat": "49.12",
+    "long": "123.43",
+    "chuanganqi": "287.2",
+    "guancezhan": "286.1"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50603",
+    "name": "新巴尔虎右旗",
+    "lat": "48.4",
+    "long": "116.49",
+    "chuanganqi": "556.0",
+    "guancezhan": "554.2"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50618",
+    "name": "新巴尔虎左旗",
+    "lat": "48.13",
+    "long": "118.16",
+    "chuanganqi": "644.6",
+    "guancezhan": "642.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50639",
+    "name": "扎兰屯",
+    "lat": "48",
+    "long": "122.44",
+    "chuanganqi": "308.5",
+    "guancezhan": "306.5"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50645",
+    "name": "莫力达瓦达斡尔族自治旗",
+    "lat": "48.29",
+    "long": "124.29",
+    "chuanganqi": "196.5",
+    "guancezhan": "195.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50647",
+    "name": "阿荣旗",
+    "lat": "48.08",
+    "long": "123.29",
+    "chuanganqi": "237.2",
+    "guancezhan": "236.2"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50727",
+    "name": "阿尔山",
+    "lat": "47.1",
+    "long": "119.56",
+    "chuanganqi": "997.7",
+    "guancezhan": "997.2"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50834",
+    "name": "索伦",
+    "lat": "46.36",
+    "long": "121.13",
+    "chuanganqi": "501.0",
+    "guancezhan": "499.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50913",
+    "name": "乌拉盖",
+    "lat": "45.43",
+    "long": "118.5",
+    "chuanganqi": "866.1",
+    "guancezhan": "865.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50915",
+    "name": "东乌珠穆沁",
+    "lat": "45.31",
+    "long": "116.58",
+    "chuanganqi": "838.9",
+    "guancezhan": "838.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50924",
+    "name": "霍林郭勒",
+    "lat": "45.32",
+    "long": "119.4",
+    "chuanganqi": "824.7",
+    "guancezhan": "823.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50928",
+    "name": "巴雅尔吐胡硕",
+    "lat": "45.04",
+    "long": "120.2",
+    "chuanganqi": "629.1",
+    "guancezhan": "628.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50934",
+    "name": "突泉",
+    "lat": "45.23",
+    "long": "121.35",
+    "chuanganqi": "312.7",
+    "guancezhan": "311.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "50937",
+    "name": "科尔沁右翼中旗",
+    "lat": "45.04",
+    "long": "121.29",
+    "chuanganqi": "283.1",
+    "guancezhan": "282.1"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53068",
+    "name": "二连浩特",
+    "lat": "43.38",
+    "long": "111.56",
+    "chuanganqi": "964.1",
+    "guancezhan": "963.1"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53083",
+    "name": "那仁宝力格",
+    "lat": "44.37",
+    "long": "114.09",
+    "chuanganqi": "1182.9",
+    "guancezhan": "1181.6"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53149",
+    "name": "满都拉气象站",
+    "lat": "42.32",
+    "long": "110.08",
+    "chuanganqi": "1226.7",
+    "guancezhan": "1225.2"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53192",
+    "name": "阿巴嘎旗",
+    "lat": "44.01",
+    "long": "114.57",
+    "chuanganqi": "1127.3",
+    "guancezhan": "1126.1"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53231",
+    "name": "海力素",
+    "lat": "41.24",
+    "long": "106.24",
+    "chuanganqi": "1510.6",
+    "guancezhan": "1509.6"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53289",
+    "name": "镶黄旗",
+    "lat": "42.14",
+    "long": "113.5",
+    "chuanganqi": "1322.8",
+    "guancezhan": "1322.1"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53336",
+    "name": "乌拉特中旗",
+    "lat": "41.34",
+    "long": "108.31",
+    "chuanganqi": "1289.2",
+    "guancezhan": "1288.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53337",
+    "name": "五原",
+    "lat": "41.06",
+    "long": "108.16",
+    "chuanganqi": "1025.4",
+    "guancezhan": "1023.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53348",
+    "name": "大佘太",
+    "lat": "41.01",
+    "long": "109.08",
+    "chuanganqi": "1080.5",
+    "guancezhan": "1078.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53352",
+    "name": "达茂旗气象局",
+    "lat": "41.42",
+    "long": "110.26",
+    "chuanganqi": "1376.2",
+    "guancezhan": "1376.6"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53357",
+    "name": "固阳县气象局",
+    "lat": "41.02",
+    "long": "110.03",
+    "chuanganqi": "1362.1",
+    "guancezhan": "1360.4"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53362",
+    "name": "四子王",
+    "lat": "41.32",
+    "long": "111.41",
+    "chuanganqi": "1491.4",
+    "guancezhan": "1490.1"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53367",
+    "name": "希拉穆仁",
+    "lat": "41.19",
+    "long": "111.14",
+    "chuanganqi": "1603.7",
+    "guancezhan": "1602.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53368",
+    "name": "武川县",
+    "lat": "41.05",
+    "long": "111.28",
+    "chuanganqi": "1640.2",
+    "guancezhan": "1637.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53378",
+    "name": "察右中旗",
+    "lat": "41.17",
+    "long": "112.37",
+    "chuanganqi": "1737.9",
+    "guancezhan": "1737.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53384",
+    "name": "察右后旗",
+    "lat": "41.27",
+    "long": "113.11",
+    "chuanganqi": "1424.9",
+    "guancezhan": "1423.5"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53385",
+    "name": "商都",
+    "lat": "41.36",
+    "long": "113.32",
+    "chuanganqi": "1420.9",
+    "guancezhan": "1420.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53391",
+    "name": "化德",
+    "lat": "41.54",
+    "long": "114",
+    "chuanganqi": "1484.6",
+    "guancezhan": "1482.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53419",
+    "name": "磴口",
+    "lat": "40.2",
+    "long": "107",
+    "chuanganqi": "1060.4",
+    "guancezhan": "1055.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53420",
+    "name": "杭锦后旗",
+    "lat": "40.51",
+    "long": "107.07",
+    "chuanganqi": "1024.9",
+    "guancezhan": "1024.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53433",
+    "name": "乌拉特前旗",
+    "lat": "40.44",
+    "long": "108.39",
+    "chuanganqi": "1022.0",
+    "guancezhan": "1020.4"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53446",
+    "name": "包头市",
+    "lat": "40.32",
+    "long": "109.53",
+    "chuanganqi": "1005.9",
+    "guancezhan": "1004.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53455",
+    "name": "土右旗气象局",
+    "lat": "40.33",
+    "long": "110.32",
+    "chuanganqi": "1000.9",
+    "guancezhan": "998.6"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53457",
+    "name": "达拉特旗",
+    "lat": "40.24",
+    "long": "110.02",
+    "chuanganqi": "1012.2",
+    "guancezhan": "1011.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53463",
+    "name": "呼和浩特",
+    "lat": "40.51",
+    "long": "111.34",
+    "chuanganqi": "1154.4",
+    "guancezhan": "1153.5"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53464",
+    "name": "土默特左旗",
+    "lat": "40.43",
+    "long": "111.1",
+    "chuanganqi": "1047.5",
+    "guancezhan": "1042.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53466",
+    "name": "呼和浩特郊区站",
+    "lat": "40.45",
+    "long": "111.42",
+    "chuanganqi": "1046.6",
+    "guancezhan": "1045.4"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53467",
+    "name": "托克托县",
+    "lat": "40.16",
+    "long": "111.11",
+    "chuanganqi": "1017.5",
+    "guancezhan": "1016.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53469",
+    "name": "和林格尔县",
+    "lat": "40.24",
+    "long": "111.49",
+    "chuanganqi": "1164.0",
+    "guancezhan": "1166.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53472",
+    "name": "卓资",
+    "lat": "40.52",
+    "long": "112.34",
+    "chuanganqi": "1453.2",
+    "guancezhan": "1451.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53475",
+    "name": "凉城",
+    "lat": "40.31",
+    "long": "112.28",
+    "chuanganqi": "1272.2",
+    "guancezhan": "1268.9"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53480",
+    "name": "集宁",
+    "lat": "41.02",
+    "long": "113.04",
+    "chuanganqi": "1421.5",
+    "guancezhan": "1419.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53481",
+    "name": "察右前旗",
+    "lat": "40.48",
+    "long": "113.13",
+    "chuanganqi": "1317.1",
+    "guancezhan": "1316.8"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53483",
+    "name": "兴和",
+    "lat": "40.52",
+    "long": "113.5",
+    "chuanganqi": "1269.9",
+    "guancezhan": "1268.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53484",
+    "name": "丰镇",
+    "lat": "40.27",
+    "long": "113.09",
+    "chuanganqi": "1192.9",
+    "guancezhan": "1191.5"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53512",
+    "name": "乌海",
+    "lat": "39.48",
+    "long": "106.48",
+    "chuanganqi": "1105.8",
+    "guancezhan": "1105.6"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53513",
+    "name": "临河",
+    "lat": "40.44",
+    "long": "107.22",
+    "chuanganqi": "1042.3",
+    "guancezhan": "1041.1"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53522",
+    "name": "伊克乌素",
+    "lat": "40.03",
+    "long": "107.5",
+    "chuanganqi": "1181.4",
+    "guancezhan": "1180.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53529",
+    "name": "鄂托克旗",
+    "lat": "39.05",
+    "long": "107.58",
+    "chuanganqi": "1381.7",
+    "guancezhan": "1381.4"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53533",
+    "name": "杭锦旗",
+    "lat": "39.49",
+    "long": "108.43",
+    "chuanganqi": "1414.4",
+    "guancezhan": "1414.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53543",
+    "name": "东胜",
+    "lat": "39.5",
+    "long": "109.59",
+    "chuanganqi": "1462.8",
+    "guancezhan": "1461.9"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53545",
+    "name": "伊金霍洛旗",
+    "lat": "39.34",
+    "long": "109.43",
+    "chuanganqi": "1367.3",
+    "guancezhan": "1367"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53553",
+    "name": "准格尔旗",
+    "lat": "39.52",
+    "long": "111.13",
+    "chuanganqi": "1222.9",
+    "guancezhan": "1221.4"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53562",
+    "name": "清水河县",
+    "lat": "39.55",
+    "long": "111.4",
+    "chuanganqi": "1192.2",
+    "guancezhan": "1187.4"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53644",
+    "name": "乌审旗",
+    "lat": "38.36",
+    "long": "108.5",
+    "chuanganqi": "1309.3",
+    "guancezhan": "1307.2"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53730",
+    "name": "鄂托克前旗",
+    "lat": "38.11",
+    "long": "107.29",
+    "chuanganqi": "1335.0",
+    "guancezhan": "1333.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "53732",
+    "name": "河南",
+    "lat": "37.51",
+    "long": "108.43",
+    "chuanganqi": "1211.5",
+    "guancezhan": "1209.9"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54012",
+    "name": "西乌珠穆沁",
+    "lat": "44.35",
+    "long": "117.36",
+    "chuanganqi": "1002.6",
+    "guancezhan": "1001.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54024",
+    "name": "富河",
+    "lat": "44.27",
+    "long": "119.18",
+    "chuanganqi": "710.0",
+    "guancezhan": "710.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54026",
+    "name": "扎鲁特",
+    "lat": "44.34",
+    "long": "120.54",
+    "chuanganqi": "265.8",
+    "guancezhan": "265.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54027",
+    "name": "巴林左旗",
+    "lat": "43.59",
+    "long": "119.24",
+    "chuanganqi": "487.2",
+    "guancezhan": "486.2"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54031",
+    "name": "高力板",
+    "lat": "44.54",
+    "long": "121.49",
+    "chuanganqi": "201.1",
+    "guancezhan": "198.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54039",
+    "name": "舍伯吐",
+    "lat": "44.02",
+    "long": "122.01",
+    "chuanganqi": "182.7",
+    "guancezhan": "181.6"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54047",
+    "name": "科左中旗",
+    "lat": "44.08",
+    "long": "123.17",
+    "chuanganqi": "146.9",
+    "guancezhan": "145.8"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54102",
+    "name": "锡林浩特",
+    "lat": "43.57",
+    "long": "116.07",
+    "chuanganqi": "1003.8",
+    "guancezhan": "1003.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54113",
+    "name": "巴林右旗",
+    "lat": "43.32",
+    "long": "118.39",
+    "chuanganqi": "622.5",
+    "guancezhan": "621.4"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54115",
+    "name": "林西县",
+    "lat": "43.38",
+    "long": "118.02",
+    "chuanganqi": "825.4",
+    "guancezhan": "825.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54117",
+    "name": "克什克腾旗",
+    "lat": "43.15",
+    "long": "117.32",
+    "chuanganqi": "1004.4",
+    "guancezhan": "1003.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54122",
+    "name": "阿鲁科尔沁旗",
+    "lat": "43.53",
+    "long": "120.03",
+    "chuanganqi": "376.0",
+    "guancezhan": "374.9"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54132",
+    "name": "青龙山",
+    "lat": "42.24",
+    "long": "121.04",
+    "chuanganqi": "400.6",
+    "guancezhan": "400.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54134",
+    "name": "开鲁",
+    "lat": "43.36",
+    "long": "121.17",
+    "chuanganqi": "242.3",
+    "guancezhan": "241.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54135",
+    "name": "通辽",
+    "lat": "43.36",
+    "long": "122.16",
+    "chuanganqi": "180.1",
+    "guancezhan": "178.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54204",
+    "name": "正镶白旗",
+    "lat": "42.18",
+    "long": "115",
+    "chuanganqi": "1347.8",
+    "guancezhan": "1346.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54205",
+    "name": "正蓝旗",
+    "lat": "42.14",
+    "long": "116",
+    "chuanganqi": "1316.6",
+    "guancezhan": "1315.5"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54208",
+    "name": "多伦县",
+    "lat": "42.11",
+    "long": "116.28",
+    "chuanganqi": "1247.0",
+    "guancezhan": "1245.4"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54213",
+    "name": "翁牛特旗",
+    "lat": "42.56",
+    "long": "119.01",
+    "chuanganqi": "635.7",
+    "guancezhan": "634.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54214",
+    "name": "岗子",
+    "lat": "42.35",
+    "long": "118.25",
+    "chuanganqi": "961.3",
+    "guancezhan": "960.0"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54218",
+    "name": "赤峰",
+    "lat": "42.18",
+    "long": "118.5",
+    "chuanganqi": "669.0",
+    "guancezhan": "668.6"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54223",
+    "name": "奈曼",
+    "lat": "42.51",
+    "long": "120.39",
+    "chuanganqi": "364.0",
+    "guancezhan": "362.9"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54225",
+    "name": "敖汉旗",
+    "lat": "42.18",
+    "long": "119.57",
+    "chuanganqi": "580.3",
+    "guancezhan": "579.4"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54226",
+    "name": "宝国吐",
+    "lat": "42.2",
+    "long": "120.42",
+    "chuanganqi": "402.0",
+    "guancezhan": "400.5"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54231",
+    "name": "科左后旗",
+    "lat": "42.58",
+    "long": "122.21",
+    "chuanganqi": "249.3",
+    "guancezhan": "248.1"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54234",
+    "name": "库伦",
+    "lat": "42.44",
+    "long": "121.45",
+    "chuanganqi": "298.9",
+    "guancezhan": "297.8"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54305",
+    "name": "太仆寺旗",
+    "lat": "41.53",
+    "long": "115.16",
+    "chuanganqi": "1470.0",
+    "guancezhan": "1468.9"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54313",
+    "name": "喀喇沁旗",
+    "lat": "41.56",
+    "long": "118.42",
+    "chuanganqi": "734.8",
+    "guancezhan": "733.7"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54316",
+    "name": "八里罕",
+    "lat": "41.31",
+    "long": "118.45",
+    "chuanganqi": "680.7",
+    "guancezhan": "679.3"
+  },
+  {
+    "province": "内蒙古",
+    "code": "54320",
+    "name": "宁城县",
+    "lat": "41.36",
+    "long": "119.18",
+    "chuanganqi": "545.3",
+    "guancezhan": "544.2"
+  }
+]

@@ -1,11 +1,13 @@
 "use strict";
 let fs = require("fs");
 let request = require("request");
-let dirExist = require("./dirExist");
+let dirExist = require("./utils/dirExist");
 var qxPast24h = require("./db/qxPast24h");
 var qxFuture72h = require("./db/qxFuture72h");
 var qxTodayWarning = require("./db/qxTodayWarning");
 var qxDay = require("./db/qxDay");
+let tools = require("./utils/tools");
+let json = require("./data/test.json");
 async function saveResultJson(url, timeStr) {
   return new Promise((resolve, reject) => {
     request(
@@ -66,11 +68,11 @@ Date.prototype.format = function(formatStr) {
   return str;
 };
 
-function sleepTime(secends) {
-  return new Promise(resolve => {
-    setTimeout(() => resolve(), secends * 1000);
-  });
-}
+// function sleepTime(secends) {
+//   return new Promise(resolve => {
+//     setTimeout(() => resolve(), secends * 1000);
+//   });
+// }
 function onInsert(err, docs) {
   if (err) {
     // TODO: handle error
@@ -79,36 +81,50 @@ function onInsert(err, docs) {
     console.info("%d potatoes were successfully stored.", docs.insertedCount);
   }
 }
-// function readCSV() {
-//   function ConvertToTable(data, callBack) {
-//     data = data.toString();
-//     var table = new Array();
-//     var rows = new Array();
-//     rows = data.split("\r\n");
-//     let columns = rows[0].split(",");
-//     for (var i = 1; i < rows.length; i++) {
-//       var obj = {};
-//       let len = rows[i].split(",");
-//       for (let j = 0; j < len.length; j++) {
-//         obj[columns[j]] = len[j];
-//       }
-//       table.push(obj);
-//     }
-//     callBack(table);
-//   }
-//   fs.readFile("./data/nmg_station.csv", function(err, data) {
-//     var table = new Array();
-//     if (err) {
-//       console.log(err.stack);
-//       return Promise.reject(err);
-//     }
+function readCSV() {
+  function ConvertToTable(data, callBack) {
+    data = data.toString();
+    var table = new Array();
+    var rows = new Array();
+    rows = data.split("\r\n");
+    let columns = [
+      "province",
+      "code",
+      "name",
+      "lat",
+      "long",
+      "chuanganqi",
+      "guancezhan"
+    ];
+    for (var i = 1; i < rows.length; i++) {
+      var obj = {};
+      let len = rows[i].split(",");
+      for (let j = 0; j < len.length; j++) {
+        obj[columns[j]] = len[j];
+      }
+      table.push(obj);
+    }
+    callBack(table);
+  }
+  fs.readFile("./data/nmg_station.csv", function(err, data) {
+    var table = new Array();
+    if (err) {
+      console.log(err.stack);
+      return Promise.reject(err);
+    }
 
-//     ConvertToTable(data, function(table) {
-//       console.log(table);
-//       return Promise.resolve(table);
-//     });
-//   });
-// }
+    ConvertToTable(data, async function(table) {
+      // console.log(table);
+      let body = JSON.stringify(table, null, 2);
+      await fs.writeFile("citys.json", body, "utf8", err => {
+        if (err) throw err;
+        console.log("写入完成：");
+      });
+
+      return Promise.resolve(table);
+    });
+  });
+}
 
 async function getSingleDay() {
   let codelist = [
@@ -131,7 +147,7 @@ async function getSingleDay() {
     let result = await saveResultJson(urlFormat, timeStr);
     results.push(...result);
     console.log(i);
-    await sleepTime(1);
+    await tools.sleepTime(4);
   }
   console.log("end");
   qxDay.collection.insertMany(results, onInsert);
@@ -161,12 +177,13 @@ async function getPast24h() {
     result.date = date.format("YYYYMMDD");
     results.push(result);
 
-    await sleepTime(5);
+    await tools.sleepTime(5);
   }
   qxPast24h.collection.insertMany(results, onInsert);
 }
 
 async function getFuture72h() {
+  console.log(json);
   let codelist = [
     {
       code: 50425,
@@ -191,7 +208,7 @@ async function getFuture72h() {
     result.date = date.format("YYYYMMDD");
     results.push(result);
 
-    await sleepTime(5);
+    await tools.sleepTime(5);
   }
   qxFuture72h.collection.insertMany(results, onInsert);
 }
@@ -206,7 +223,7 @@ async function getWaring() {
   let timeStr = "天气预警：" + today + "日";
   let result = await saveResultJson(urlFormat, timeStr);
 
-  await sleepTime(5);
+  await tools.sleepTime(5);
 
   qxTodayWarning.collection.insertMany(result, onInsert);
 }
@@ -215,3 +232,4 @@ exports.getPast24h = getPast24h;
 exports.getFuture72h = getFuture72h;
 exports.getWaring = getWaring;
 exports.getSingleDay = getSingleDay;
+// exports.readCSV = readCSV;

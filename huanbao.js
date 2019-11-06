@@ -1,7 +1,8 @@
 "use strict";
 let fs = require("fs");
 let request = require("request");
-let dirExist = require("./dirExist");
+let dirExist = require("./utils/dirExist");
+let tools = require("./utils/tools");
 var Day = require("./db/day");
 var Hour = require("./db/hour");
 var Month = require("./db/month");
@@ -122,21 +123,7 @@ const citys = {
   "152922": "阿拉善右旗",
   "152923": "额济纳旗"
 };
-Date.prototype.format = function(formatStr) {
-  var str = formatStr;
-  str = str.replace(/yyyy|YYYY/, this.getFullYear());
-  str = str.replace(
-    /MM/,
-    this.getMonth() + 1 > 9
-      ? (this.getMonth() + 1).toString()
-      : "0" + (this.getMonth() + 1)
-  );
-  str = str.replace(
-    /dd|DD/,
-    this.getDate() > 9 ? this.getDate().toString() : "0" + this.getDate()
-  );
-  return str;
-};
+Date.prototype.format = tools.format;
 
 async function saveResultJson(url, timeStr) {
   return new Promise((resolve, reject) => {
@@ -156,11 +143,11 @@ async function saveResultJson(url, timeStr) {
     });
   });
 }
-function sleepTime(secends) {
-  return new Promise(resolve => {
-    setTimeout(() => resolve(), secends * 1000);
-  });
-}
+// function sleepTime(secends) {
+//   return new Promise(resolve => {
+//     setTimeout(() => resolve(), secends * 1000);
+//   });
+// }
 function onInsert(err, docs) {
   if (err) {
     // TODO: handle error
@@ -179,7 +166,7 @@ async function getMonthData(params) {
     let timeStr = "月：" + date.format("YYYY-MM") + "月" + citys[index];
     let result = await saveResultJson(urlFormat, timeStr);
     results.push(result);
-    await sleepTime(0.5);
+    await tools.sleepTime(2);
   }
   await Month.collection.insertMany(results, onInsert);
 }
@@ -196,7 +183,7 @@ async function getTodayData() {
       (i == 0 ? "盟市级" : i == 1 ? "旗县级" : i == 2 ? "监测点" : "其他");
     let result = await saveResultJson(urlFormat, timeStr);
     await Day.collection.insertMany(result, onInsert);
-    await sleepTime(0.5);
+    await tools.sleepTime(2);
   }
 }
 
@@ -217,7 +204,7 @@ async function getHourData() {
 
     let result = await saveResultJson(urlFormat, timeStr);
     await Hour.collection.insertMany(result, onInsert);
-    await sleepTime(0.5);
+    await tools.sleepTime(2);
   }
 }
 
